@@ -30,11 +30,11 @@
                 query.executeUpdate("insert into USUARIO values ('" + request.getParameter("username") + "','"+ request.getParameter("password")+"')");
                 response.sendRedirect("inicio.jsp");
             }
-            ResultSet r = query.executeQuery("select * from USUARIO");
-            while(r.next()){
+            //ResultSet r = query.executeQuery("select * from USUARIO");
+            //while(r.next()){
                 
-                out.println("Name: "+ r.getString("USUARIO")+ "<br><br>");
-                out.println("Contraseña: "+ r.getString("CONTRASENA")+ "<br><br>");
+                //out.println("Name: "+ r.getString("USUARIO")+ "<br><br>");
+                //out.println("Contraseña: "+ r.getString("CONTRASENA")+ "<br><br>");
                 
             
             }
