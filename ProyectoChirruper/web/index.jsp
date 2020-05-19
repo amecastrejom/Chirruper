@@ -16,19 +16,18 @@
         <link href="styleLogin.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
         <%
-            try{
+            
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Omega","root","root");
             Statement query = con.createStatement();
             if(request.getParameter("enviar")!= null){
                 ResultSet r = query.executeQuery("select CONTRASENA from USUARIO where USUARIO='"+ request.getParameter("username")+"'");
                 if(r.next()){
-                    if(r.getString("CONTRASENA")== request.getParameter("password")){
+                    if(r.getString("CONTRASENA").equals(request.getParameter("password"))){
                         HttpSession mySession = request.getSession();
                         String userName = request.getParameter("username");
                         mySession.setAttribute("username", userName);
                         response.sendRedirect("inicio.jsp");
-                    } else{ 
                     }
                 }
                 
@@ -37,17 +36,14 @@
             con.commit();
             con.close();
             
-            }
-            catch(Exception ex){
-                ex.printStackTrace();
-            }
+           
             
        
         %>
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form action="inicio.jsp" method="POST">
+        <form>
         <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
