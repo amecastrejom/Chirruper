@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>Hint</servlet-name>
+        <servlet-class>Servlets.Hint</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>follow</servlet-name>
+        <servlet-class>Servlets.follow</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>unfollow</servlet-name>
+        <servlet-class>Servlets.unfollow</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Hint</servlet-name>
+        <url-pattern>/Hint</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>follow</servlet-name>
+        <url-pattern>/follow</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>unfollow</servlet-name>
+        <url-pattern>/unfollow</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
