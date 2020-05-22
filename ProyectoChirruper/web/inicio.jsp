@@ -49,14 +49,14 @@ and open the template in the editor.
 </head>
 <body>
 <% 
-            /*
+            
             HttpSession mySession =request.getSession();
-            if(mySession.getAttribute("usuario")!=null && mySession.getAttribute("contrasena")!=null){
+            if(mySession.getAttribute("username")!=null && mySession.getAttribute("password")!=null){
                 
             }else{
                     response.sendRedirect("index.jsp");
                 }
-            */
+            
         %>
         <script>
             function Sugerencia(id, target) {
