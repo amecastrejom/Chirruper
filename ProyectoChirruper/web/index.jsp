@@ -26,7 +26,9 @@
                     if(r.getString("CONTRASENA").equals(request.getParameter("password"))){
                         HttpSession mySession = request.getSession();
                         String userName = request.getParameter("username");
+			String password = request.getParameter("password");
                         mySession.setAttribute("username", userName);
+			mySession.setAttribute("password", password);
                         response.sendRedirect("inicio.jsp");
                     }
                 }
