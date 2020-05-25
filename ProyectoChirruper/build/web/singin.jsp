@@ -16,28 +16,29 @@
         <title>JSP Page</title>
         
         <%
-            // Se recupera el atributo sesión
-            //HttpSession mySession = request.getSession();
-            //if (mySession.getAttribute("username")!=null) {                        
-            //} else {
-             //  response.sendRedirect("login.jsp");
-            //}
+            
             try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/Omega","root","root");
             Statement query = con.createStatement();
             if(request.getParameter("enviar")!= null){
-                query.executeUpdate("insert into USUARIO values ('" + request.getParameter("username") + "','"+ request.getParameter("password")+"')");
-                response.sendRedirect("index.jsp");
-            }
-            //ResultSet r = query.executeQuery("select * from USUARIO");
-            //while(r.next()){
+                ResultSet rs = query.executeQuery("SELECT * FROM USUARIO WHERE USUARIO = '" + request.getParameter("username") + "'");
+                if(rs.next()) {
+                    out.println("<script>alert('Este usuario ya se encuentra registrado');</script>");
+                    
+                }
+                else{
+                    query.executeUpdate("insert into USUARIO values ('" + request.getParameter("username") + "','"+ request.getParameter("password")+"')");                             
+                    response.sendRedirect("index.jsp");
+                }
                 
-                //out.println("Name: "+ r.getString("USUARIO")+ "<br><br>");
-                //out.println("Contraseña: "+ r.getString("CONTRASENA")+ "<br><br>");
+                
+                
+            }
+            
                 
             
-            //}
+            
             con.commit();
             con.close();
             } catch(Exception ex){
