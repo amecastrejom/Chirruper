@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,6 +40,9 @@ public class follow extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         /* TODO output your page here. You may use following sample code. */
+        HttpSession mySession =request.getSession();
+        
+
         String usuario;
         usuario=request.getParameter("usuario");
         
@@ -50,7 +54,7 @@ public class follow extends HttpServlet {
         "root");
         Statement query = con.createStatement();
         
-        query.executeUpdate("INSERT INTO FOLLOWS VALUES ('ame98', '"+usuario+"')");
+        query.executeUpdate("INSERT INTO FOLLOWS VALUES ('"+mySession.getAttribute("username")+"', '"+usuario+"')");
         response.sendRedirect("inicio.jsp");
         //con.commit();
         //con.close();

@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,8 +39,10 @@ public class unfollow extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
             /* TODO output your page here. You may use following sample code. */
             try {
+                HttpSession mySession =request.getSession();
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -55,7 +58,7 @@ public class unfollow extends HttpServlet {
             "root"); 
             Statement query = con.createStatement();
             out.println("<script>alert('hola');</script>");
-            query.executeUpdate("DELETE FROM FOLLOWS where USUARIO='ame98' and Follows='"+request.getParameter("usuarioE")+"'");
+            query.executeUpdate("DELETE FROM FOLLOWS where USUARIO='"+mySession.getAttribute("username")+"' and Follows='"+request.getParameter("usuarioE")+"'");
 
             
             

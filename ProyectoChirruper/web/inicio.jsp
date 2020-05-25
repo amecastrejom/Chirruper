@@ -122,7 +122,7 @@ and open the template in the editor.
                                         /* TODO output your page here. You may use following sample code. */
                                         Statement query = con.createStatement();
                                 
-                                        ResultSet rs = query.executeQuery("SELECT FOLLOWS FROM FOLLOWS where Usuario='ame98'");
+                                        ResultSet rs = query.executeQuery("SELECT FOLLOWS FROM FOLLOWS where Usuario='"+mySession.getAttribute("username")+"'");
                                         while (rs.next()) {
                                             out.println("<form  action = 'unfollow'>");
                                             out.println("<li class='person chatboxhead active' id='chatbox1_Kristina' data-chat='person_1' href='javascript:void(0)' onclick='javascript:chatWith('Kristina','3','avatar_default.png','Offline')'");
